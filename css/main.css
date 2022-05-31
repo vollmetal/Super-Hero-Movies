@@ -1,0 +1,42 @@
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+}
+
+button {
+    border-style: outset;
+}
+
+.searchBar {
+    display: flex;
+    justify-content: center;
+}
+
+#moviesList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+
+#selectedMovieDisplay {
+    background-color: gray;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+}
+
+.movieItem {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    margin: 1rem;
+    background-color: gray;
+    justify-content: center;
+}
+
+.movieItem img {
+    margin-bottom: 1rem;
+}
