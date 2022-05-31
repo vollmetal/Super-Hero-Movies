@@ -22,23 +22,20 @@ searchButton.addEventListener('click', function () {
 
 apiHandler.addEventListener('load', function () {
     let movies = JSON.parse(this.responseText)
-    console.log(movies)
     let movieIDs = []
 
-    if(movies.Response == 'True')
-    {
-        let movieDisplay = movies.Search.map(function(movie) {
+    if (movies.Response == 'True') {
+        let movieDisplay = movies.Search.map(function (movie) {
             let movieLink = `${apiURL}i=${movie.imdbID}&${apiKey}`
             movieIDs.push(movie.imdbID)
-            console.log(movieLink)
             return `<div class="movieItem">
             <img src="${movie.Poster}" alt="">
             <button id="${movie.imdbID}">${movie.Title}</button>
         </div>`
         })
         moviesList.innerHTML = movieDisplay.join('')
-        let movieElements = movieIDs.map(function(id) {
-            document.getElementById(id).addEventListener ('click', function() {
+        let movieElements = movieIDs.map(function (id) {
+            document.getElementById(id).addEventListener('click', function () {
                 movieHandler.open('GET', `${apiURL}i=${id}&${apiKey}`)
                 movieHandler.send()
             })
@@ -47,20 +44,18 @@ apiHandler.addEventListener('load', function () {
         movieSearchBox.value = ''
         movieSearchBox.placeholder = "Search by title"
     }
-    else
-    {
+    else {
         movieSearchBox.value = ''
         movieSearchBox.placeholder = `${movies.Error}`
         console.log(movies.Error)
     }
-    
-    
-    
+
+
+
 })
 
-movieHandler.addEventListener('load', function() {
+movieHandler.addEventListener('load', function () {
     let movie = JSON.parse(this.responseText)
-    console.log(movie)
 
     let detailMovieDisplay = `<h1>${movie.Title}</h1>
     <img src="${movie.Poster}" alt="">
